@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Banner from '../components/Banner'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import LargeCard from '../components/LargeCard'
 import MediumCard from '../components/MediumCard'
@@ -28,6 +29,8 @@ export default function Home({ exploreData, cardData }) {
                 img={item.img}
                 location={item.location}
                 distance={item.distance}
+                customCardImg='https://a0.muscache.com/im/pictures/6b36a0f9-453f-4d11-974e-0cf164b4d18c.jpg?im_q=medq&im_w=240'
+                customCardTitle='Philadelphia'
               />
             ))}
           </div>
@@ -53,8 +56,8 @@ export default function Home({ exploreData, cardData }) {
           description='Wishlists curated by Airbnb.'
           buttonText='Get Inspired'
         />
-
       </main>
+      <Footer />
     </div>
 
   )
