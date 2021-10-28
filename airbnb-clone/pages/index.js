@@ -21,7 +21,7 @@ export default function Home({ exploreData, cardData }) {
           <h2 className='text-4xl font-semibold pb-5'>Explore Nearby</h2>
 
           {/* Pull some data from a server - API endpoints */}
-          <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+          <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4'>
             {exploreData?.map((item) => (
               <SmallCard
                 key={item.id}
