@@ -25,6 +25,10 @@ function Header() {
         setEndDate(ranges.selection.endDate)
     }
 
+    const resetInput = () => {
+        setSearchInput('')
+    }
+
     return (
         <div className='sticky top-0 z-50 grid grid-cols-3 bg-white shadow-lg p-5 md:px-10'>
             {/* Left */}
@@ -81,7 +85,13 @@ function Header() {
                             value={numOfGuests}
                             onChange={e => setNumOfGuests(e.target.value)}
                             type='number'
-                            className='w-12 pl-2 text-lg outline-none text-[#FD5B61]' />
+                            min={1}
+                            className='w-12 pl-2 text-lg outline-none text-[#FD5B61]'
+                        />
+                    </div>
+                    <div className='flex'>
+                        <button onClick={resetInput} className='hover:bg-gray-400 hover:shadow-lg hover:text-white m-1 outline-none flex-grow border-2 rounded-lg border-gray-400 text-gray-500'> Cancel</button>
+                        <button className='hover:bg-[#FD5B61] hover:shadow-lg hover:text-white m-1 outline-none flex-grow text-[#FD5B61] border-2 rounded-lg border-[#FD5B61]'>Search</button>
                     </div>
                 </div>
             }
