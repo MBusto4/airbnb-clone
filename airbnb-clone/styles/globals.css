@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer components {
+    .footerOption {
+        @apply cursor-pointer hover:underline
+    }
+}
