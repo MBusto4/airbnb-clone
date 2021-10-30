@@ -33,10 +33,6 @@ module.exports = {
                     },
                 ],
             },
-
-
-
-
             {
                 source: '/api/search',
                 headers: [
@@ -64,6 +60,9 @@ module.exports = {
             'p.kindpng.com'
 
         ]
+    },
+    env: {
+        mapbox_key: 'pk.eyJ1IjoibWJ1c3RvNCIsImEiOiJja2tlOGxrdm4wYWE3MnZxdHpoYnF5NmJ0In0.gOLoPNW8XvD9sI5gDotyvw'
     }
 
 }
