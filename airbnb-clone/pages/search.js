@@ -6,7 +6,7 @@ import Header from '../components/Header'
 import { format } from 'date-fns'
 import SearchInfoCard from '../components/SearchInfoCard'
 
-function Search({ londonSearchResults, newYorkSearchResults, bostonSearchResults }) {
+function Search({ searchResults }) {
     const router = useRouter()
 
     //getting the query params from the search
@@ -15,18 +15,6 @@ function Search({ londonSearchResults, newYorkSearchResults, bostonSearchResults
     const formattedStartDate = format(new Date(startDate), 'dd MMMM yy')
     const formattedEndDate = format(new Date(endDate), 'dd MMMM yy')
     const range = `${formattedStartDate} - ${formattedEndDate}`
-
-    const london = 'london'
-    const newYork = 'new york'
-    const boston = 'boston'
-
-    const toTitleCase = (phrase) => {
-        return phrase
-            .toLowerCase()
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-    };
 
     return (
         <div className=''>
@@ -47,126 +35,25 @@ function Search({ londonSearchResults, newYorkSearchResults, bostonSearchResults
                     </div>
 
                     <div>
-                        {(() => {
-                            switch (location) {
-                                case london: return (
-                                    <div className='flex flex-col'>
-                                        {londonSearchResults.map((item) => (
-                                            <SearchInfoCard
-                                                key={item.img}
-                                                img={item.img}
-                                                location={item.location}
-                                                title={item.title}
-                                                description={item.description}
-                                                star={item.star}
-                                                price={item.price}
-                                                total={item.total}
-                                                long={item.long}
-                                                lat={item.lat}
-                                            />
-                                        ))}
-                                    </div>
-                                );
-                                case newYork: return (
-                                    <div className='flex flex-col'>
-                                        {newYorkSearchResults.map((item) => (
-                                            <SearchInfoCard
-                                                key={item.img}
-                                                img={item.img}
-                                                location={item.location}
-                                                title={item.title}
-                                                description={item.description}
-                                                star={item.star}
-                                                price={item.price}
-                                                total={item.total}
-                                                long={item.long}
-                                                lat={item.lat}
-                                            />
-                                        ))}
-                                    </div>
-                                );
-                                case boston: return (
-                                    <div className='flex flex-col'>
-                                        {bostonSearchResults.map((item) => (
-                                            <SearchInfoCard
-                                                key={item.img}
-                                                img={item.img}
-                                                location={item.location}
-                                                title={item.title}
-                                                description={item.description}
-                                                star={item.star}
-                                                price={item.price}
-                                                total={item.total}
-                                                long={item.long}
-                                                lat={item.lat}
-                                            />
-                                        ))}
-                                    </div>
-                                );
-                                default: return <h1> No results found... </h1>;
+                        <div className='flex flex-col'>
+                            {
+                                searchResults?.map((item) => (
+                                    <SearchInfoCard
+                                        key={item.img}
+                                        img={item.img}
+                                        location={item.location}
+                                        title={item.title}
+                                        description={item.description}
+                                        star={item.star}
+                                        price={item.price}
+                                        total={item.total}
+                                        long={item.long}
+                                        lat={item.lat}
+                                    />
+                                ))
                             }
-                        })()}
+                        </div>
                     </div>
-
-
-                    {/* 
-                    {
-                        (location === london) ? (
-                            <div className='flex flex-col'>
-                                {londonSearchResults.map((item) => (
-                                    <SearchInfoCard
-                                        key={item.img}
-                                        img={item.img}
-                                        location={item.location}
-                                        title={item.title}
-                                        description={item.description}
-                                        star={item.star}
-                                        price={item.price}
-                                        total={item.total}
-                                        long={item.long}
-                                        lat={item.lat}
-                                    />
-                                ))}
-                            </div>
-                        ) : (location === newYork) ? (
-                            <div className='flex flex-col'>
-                                {newYorkSearchResults.map((item) => (
-                                    <SearchInfoCard
-                                        key={item.img}
-                                        img={item.img}
-                                        location={item.location}
-                                        title={item.title}
-                                        description={item.description}
-                                        star={item.star}
-                                        price={item.price}
-                                        total={item.total}
-                                        long={item.long}
-                                        lat={item.lat}
-                                    />
-                                ))}
-                            </div>
-                        ) : (location === boston) ? (
-                            <div className='flex flex-col'>
-                                {bostonSearchResults.map((item) => (
-                                    <SearchInfoCard
-                                        key={item.img}
-                                        img={item.img}
-                                        location={item.location}
-                                        title={item.title}
-                                        description={item.description}
-                                        star={item.star}
-                                        price={item.price}
-                                        total={item.total}
-                                        long={item.long}
-                                        lat={item.lat}
-                                    />
-                                ))}
-                            </div>
-                        ) : (
-                            <div> No Search Results Found</div>
-                        )} */}
-
-
                 </section>
             </main>
             <Footer />
@@ -174,25 +61,29 @@ function Search({ londonSearchResults, newYorkSearchResults, bostonSearchResults
     )
 }
 
+const cityToKeyMap = {
+    'new york': 'YRKI',
+    'boston': 'UVUX',
+    'london': 'P1RJ'
+}
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+
+    const { params, req, res, response } = context
+
+    console.log('req here', req.__NEXT_INIT_QUERY)
+
+    const { location } = req.__NEXT_INIT_QUERY
+
+    console.log('location', location)
+
     //pulling the data from the api
-    const londonSearchResults = await fetch('https://jsonkeeper.com/b/P1RJ')
-        .then(
-            res => res.json()
-        )
-    const newYorkSearchResults = await fetch('https://jsonkeeper.com/b/YRKI')
-        .then(
-            res => res.json()
-        )
-    const bostonSearchResults = await fetch('https://jsonkeeper.com/b/UVUX')
+    const searchResults = await fetch(`https://jsonkeeper.com/b/${cityToKeyMap[location]}`)
         .then(
             res => res.json()
         )
     return {
-        props: {
-            londonSearchResults, newYorkSearchResults, bostonSearchResults
-        }
+        props: { searchResults }
     }
 }
 
