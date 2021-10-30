@@ -5,8 +5,8 @@
         @apply cursor-pointer hover:underline
     }
     .searchOption{
-        @apply px-4 py-2 border shadow-xl active:bg-[#FD5B61] 
-        text-[#FD5B61] active:text-white border-[#FD5B61] 
+        @apply px-4 py-1 border shadow-xl hover:bg-[#FD5B61] 
+        text-[#FD5B61] hover:text-white border-[#FD5B61] 
         rounded-full cursor-pointer hover:shadow-xl active:scale-95 
         transition duration-200 ease-out
 }

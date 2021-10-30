@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router'
-import { route } from 'next/dist/server/router'
+
 import React from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -28,9 +28,10 @@ function Search({ searchResults }) {
 
                     <div className='hidden md:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap'>
                         <p className='searchOption'>Cancelation Flexibility</p>
-                        <p className='searchOption'>Cancelation Flexibility</p>
-                        <p className='searchOption'>Cancelation Flexibility</p>
-                        <p className='searchOption'>Cancelation Flexibility</p>
+                        <p className='searchOption'>Type of Place</p>
+                        <p className='searchOption'>Price</p>
+                        <p className='searchOption'>Rooms and Beds</p>
+                        <p className='searchOption'>More Filters</p>
                     </div>
 
                     <div className='flex flex-col'>

@@ -20,7 +20,7 @@ export default function Home({ exploreData, liveAnywhereData, discoverData }) {
 
       <main className='max-w-7xl mx-auto px-8 sm:px-16'>
         <section className='pt-6'>
-          <h2 className='text-4xl font-semibold pb-5'>Explore Nearby</h2>
+          <h2 className='text-4xl font-semibold pb-5 text-center md:text-left'>Explore Nearby</h2>
 
           {/* Pull some data from a server - API endpoints */}
           <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4'>
@@ -42,7 +42,7 @@ export default function Home({ exploreData, liveAnywhereData, discoverData }) {
 
 
         <section>
-          <h2 className='text-4xl font-semibold py-8 '>Live Anywhere</h2>
+          <h2 className='text-4xl font-semibold py-8 text-center md:text-left '>Live Anywhere</h2>
           <div className='flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3'>
             {liveAnywhereData?.map((item) => (
               <MediumCard
@@ -62,7 +62,7 @@ export default function Home({ exploreData, liveAnywhereData, discoverData }) {
         />
 
         <section>
-          <h2 className='text-4xl font-semibold py-8 '>Discover things to do</h2>
+          <h2 className='text-4xl font-semibold py-8 text-center md:text-left '>Discover things to do</h2>
           <div className='flex sm:overflow-scroll sm:space-x-2 sm:scrollbar-hide p-3 -ml-3'>
             {discoverData?.map((item) => (
               <div className='mx-auto'>
