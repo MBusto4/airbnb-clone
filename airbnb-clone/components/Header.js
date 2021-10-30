@@ -62,12 +62,12 @@ function Header({ placeholder }) {
                 <input
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
-                    placeholder={placeholder || 'Search for locations...'}
+                    placeholder={placeholder || 'Enter a location in ALL lower case!!!'}
                     className='pl-5 bg-transparent outline-none 
                 flex-grow text-sm text-gray-600 placeholder-gray-400 text-transform: capitalize ' />
                 <SearchIcon
                     className='hidden md:inline-flex h-8 bg-[#FD5B61] text-white rounded-full
-                    p-2 cursor-pointer md:mx-2'
+                    p-2 cursor-pointer md:mx-2' onClick={search}
                 />
             </div>
 
