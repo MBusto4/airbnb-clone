@@ -6,13 +6,15 @@ import {
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
+import { useRouter } from "next/dist/client/router"
 
-function Header() {
+function Header({ placeholder }) {
 
     const [searchInput, setSearchInput] = useState('')
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(new Date())
     const [numOfGuests, setNumOfGuests] = useState(1)
+    const router = useRouter()
 
     const selectionRange = {
         startDate: startDate,
@@ -29,10 +31,23 @@ function Header() {
         setSearchInput('')
     }
 
+    const search = () => {
+        router.push({
+            pathname: '/search',
+            query: {
+                location: searchInput,
+                startDate: startDate.toISOString(),
+                endDate: endDate.toISOString(),
+                numOfGuests
+
+            }
+        })
+    }
+
     return (
         <div className='sticky top-0 z-50 grid grid-cols-3 bg-white shadow-lg p-5 md:px-10'>
             {/* Left */}
-            <div className='relative flex items-center h-10 cursor-pointer my-auto'>
+            <div onClick={() => router.push('/')} className='relative flex items-center h-10 cursor-pointer my-auto'>
                 <Image
                     src='https://links.papareact.com/qd3'
                     layout='fill'
@@ -47,12 +62,12 @@ function Header() {
                 <input
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
-                    placeholder='Search for locations...'
+                    placeholder={placeholder || 'Enter a location in ALL lower case!!!'}
                     className='pl-5 bg-transparent outline-none 
-                flex-grow text-sm text-gray-600 placeholder-gray-400 ' />
+                flex-grow text-sm text-gray-600 placeholder-gray-400 text-transform: capitalize ' />
                 <SearchIcon
                     className='hidden md:inline-flex h-8 bg-[#FD5B61] text-white rounded-full
-                    p-2 cursor-pointer md:mx-2'
+                    p-2 cursor-pointer md:mx-2' onClick={search}
                 />
             </div>
 
@@ -91,7 +106,7 @@ function Header() {
                     </div>
                     <div className='flex'>
                         <button onClick={resetInput} className='hover:bg-gray-400 hover:shadow-lg hover:text-white m-1 outline-none flex-grow border-2 rounded-lg border-gray-400 text-gray-500'> Cancel</button>
-                        <button className='hover:bg-[#FD5B61] hover:shadow-lg hover:text-white m-1 outline-none flex-grow text-[#FD5B61] border-2 rounded-lg border-[#FD5B61]'>Search</button>
+                        <button onClick={search} className='hover:bg-[#FD5B61] hover:shadow-lg hover:text-white m-1 outline-none flex-grow text-[#FD5B61] border-2 rounded-lg border-[#FD5B61]'>Search</button>
                     </div>
                 </div>
             }

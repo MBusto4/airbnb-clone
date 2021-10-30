@@ -5,6 +5,7 @@ import Image from 'next/image'
 function LargeCard({ img, title, description, buttonText }) {
     return (
         <section className='relative py-16 cursor-pointer'>
+
             <div className='relative h-96 min-w-[300px]'>
                 <Image
                     src={img}
@@ -20,6 +21,11 @@ function LargeCard({ img, title, description, buttonText }) {
 
                 <button className='text-sm text-white bg-[#121212] px-4 py-4 rounded-lg mt-5'>{buttonText}</button>
             </div>
+
+
+
+
+
         </section>
     )
 }
