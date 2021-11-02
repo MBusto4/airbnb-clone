@@ -66,8 +66,8 @@ function Search({ searchResults }) {
 }
 
 const cityToKeyMap = {
-    'new york': 'YRKI',
-    'boston': 'UVUX',
+    'new york': 'BBA0',
+    'boston': '2DYY',
     'london': 'P1RJ'
 }
 

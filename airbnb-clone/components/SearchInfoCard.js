@@ -28,7 +28,6 @@ function SearchInfoCard({ img, title, description, long, lat, location, star, pr
 
                     <div>
                         <p className='text-lg font-semibold pb lg:text-2xl'>{price}</p>
-                        <p className='text-right font-extralight'>{total}</p>
                     </div>
                 </div>
 
