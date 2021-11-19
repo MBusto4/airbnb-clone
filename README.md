@@ -11,14 +11,14 @@
 
 ## Features to Try!
 
-- Sign into OuterView with your Google account
-- Record yourself talking and see a live transcription
-- Render Face Points and make some funny faces
-- Emotions trained into machine learning model
-  - _Happy, Sad, Surprised, Anger, Fearful, Disgusted, Neutral_
-- Say lots of filler words such as 'like', 'totally' and 'basically'
-- Try different emotions with varying amounts of filler words to see the scoring algorithm work
-- See your previous recordings in the All Recordings page
+- This clone allows you to search certain locations for airbnb stays
+- The home page is an exact replica on Airbnb's home page
+- The 3 main locations that work with this clone are searches for stays in London, New York, Boston so those can be typed into the seach bar.
+- The search bar in the header has a calender that will drop down when typing starts
+- Select the dates you are looking to stay in that location and select the number of guests
+- One you press search you will be redirected to show the stays in that searched location 
+- Each location has a certain Longitude and Lattitude, and you can see them as pins on the GPS map to the right.
+
 
 ## Technologies
 
@@ -31,7 +31,9 @@
   - Calender Picker
    
 ## Future Roadmap
-
+- Be able to tap into different API end-points to see any location
+- Add a details screen of the certain Airbnb stay to see more infor about it
+- Implement stripe payments to actually be able to book a room and have it processed through Firebase
 
 
 ## Installation
