@@ -13,7 +13,7 @@
 
 - This clone allows you to search certain locations for airbnb stays
 - The home page is a replica on Airbnb's home page
-- The 3 main locations that work with this clone are searches for stays in London, New York, Boston so those can be typed into the seach bar.
+- The 3 main locations that work with this clone are searches for stays in London, New York, Boston. Those can be typed into the seach bar
 - The search bar in the header has a calender that will drop down when typing starts
 - Select the dates you are looking to stay in that location and select the number of guests
 - One you press search you will be redirected to show the stays in that searched location 
